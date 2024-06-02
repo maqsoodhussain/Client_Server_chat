@@ -11,6 +11,9 @@ print(s.recv(1024).decode())
 
 while True:
     message = input("You: ")
+    if message =='0':
+        print("Disconnected..!")
+        break
     s.send(bytes(message, 'utf-8'))
     print(s.recv(1024).decode())
-    print("Wait...")
+    
