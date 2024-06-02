@@ -1,7 +1,7 @@
 import socket
 
 s = socket.socket()
-host = '192.168.239.145'
+host = 'localhost'
 port = 1255
 s.connect((host, port))
 
@@ -10,6 +10,7 @@ s.send(bytes(name, 'utf-8'))
 print(s.recv(1024).decode())
 
 while True:
+    print("Wait...")
     message = input("You: ")
     if message =='0':
         print("Disconnected..!")

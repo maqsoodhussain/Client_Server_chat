@@ -3,7 +3,7 @@ import socket
 s = socket.socket()
 print("Socket Connected")
 
-host = '192.168.239.145'
+host = 'localhost'
 port = 1255
 
 s.bind((host, port))
@@ -29,7 +29,7 @@ while True:
                 break
             print(f"{name}: {msg}")
             se = input("You: ")
-            c.send(bytes(f"server: , {se}!", "utf-8"))
+            c.send(bytes(f"server:{se}!", "utf-8"))
         except ConnectionResetError:
             print("Client forcibly closed the connection")
             c.close()
