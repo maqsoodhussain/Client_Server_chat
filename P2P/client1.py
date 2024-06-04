@@ -1,7 +1,7 @@
 import socket
 
 
-host = "0.0.0.0"
+host = "localhost"
 port = 1255
 
 s = socket.socket()
@@ -14,12 +14,14 @@ print("Waiting for incomming connection....")
 client , address = s.accept()
 print("Connected to .",address)
 
+name = client.recv(1024).decode()
 try:
     while True:
+        print("wait...")
         data = client.recv(1024)
         if not data:
             break
-        print("Sender: ", data.decode())
+        print(f"{name}: ", data.decode())
 
 
         msg = input("You: ")
