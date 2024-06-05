@@ -8,7 +8,6 @@ def main():
         s = socket.socket()
         s.bind((host,port))
 
-
         s.listen(1)
         print("Waiting connection....")
 
