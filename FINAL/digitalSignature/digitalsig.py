@@ -5,8 +5,9 @@ from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA1
 from Crypto.PublicKey import RSA
 
+# verify using private key and sign using public key
 def verify(signature,message):
-        key = RSA.import_key(open('D:\GITHUB\Chat_App\FINAL\generateKeys\private.key').read())
+        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL/generateKeys/private.key').read())
         #message = b'hello '
         
 
@@ -21,7 +22,7 @@ def verify(signature,message):
         
 def sign(message,):
         #message = b'hello'
-        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL/private.key').read())
+        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL/generateKeys/public.key').read())
 
 
         hash = SHA1.new(message)

@@ -1,6 +1,11 @@
 import sys
 sys.path.append('../')
 
-from generateKeys import genkey
+from database import connect
 
-print(genkey.privatekey())
+rows = connect.get()
+var = connect.verify_credentials('user11',12345)
+if var is True:
+    print("found")
+else:
+    print("not found")
