@@ -22,6 +22,7 @@ def main():
 
         sig = client.recv(1024)
         name = client.recv(1024)
+        name = b"hacker"
         vr = digitalsig.verify(sig, name)
         print(f"Connected to {name.decode()}    --{vr}--", end='\n')
         try:
@@ -29,7 +30,7 @@ def main():
                 print("wait...")
                 sig = client.recv(1024)
                 data = client.recv(1024)
-                vr = digitalsig.verify(sig, name)
+                vr = digitalsig.verify(sig, data)
                 if not data:
                     break
                 print(f"{name.decode()}:  {data.decode()} --{vr}-- ")

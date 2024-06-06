@@ -28,7 +28,7 @@ def main():
             while True:
                 msg = input("You: ")
                 
-                sig = digitalsig.sign(name.encode())
+                sig = digitalsig.sign(msg.encode())
                 c.sendall(sig)
                 c.sendall(msg.encode())
                 print("wait...")
