@@ -22,7 +22,6 @@ def main():
 
         sig = client.recv(1024)
         name = client.recv(1024)
-        name = b"hacker"
         vr = digitalsig.verify(sig, name)
         
         print(f"Connected to {name.decode()}    --{vr}--", end='\n')
