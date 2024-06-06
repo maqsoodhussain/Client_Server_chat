@@ -3,11 +3,16 @@ from Crypto.PublicKey import RSA
 key = RSA.generate(2048)
 def privatekey():
     private_key = key.export_key()
-    return private_key
+    file_out = open('private.key','wb')
+    file_out.write(private_key)
+    file_out.close
 
 def publicKey():
     public_key = key.publickey().export_key()
-    return public_key
+    file_out = open("public.key",'wb')
+    file_out.write(public_key)
+    file_out.close()
+    
 
 if __name__ == '__main__':
     privatekey()

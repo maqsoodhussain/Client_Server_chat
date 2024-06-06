@@ -1,6 +1,6 @@
 import sys
-sys.path.append('D:/GITHUB/Chat_App/FINAL/')
+sys.path.append('../')
 
 from generateKeys import genkey
 
-
+print(genkey.privatekey())

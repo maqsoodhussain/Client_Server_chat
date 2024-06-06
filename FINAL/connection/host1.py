@@ -1,29 +1,38 @@
+import sys
+sys.path.append('../')
 import socket
-def main():
+from generateKeys import genkey
+from digitalSignature import digitalsig
+from Crypto.Signature import pkcs1_15
+from Crypto.Hash import SHA1
 
+def main():
     def con():
-        host = "0.0.0.0"
+        host = "localhost"
         port = 1255
 
         s = socket.socket()
-        s.bind((host,port))
+        s.bind((host, port))
 
         s.listen(1)
-        print("Waiting connection....")
+        print("Waiting for connection....")
 
-        client , address = s.accept()
-        print("Connected to .",address)
+        client, address = s.accept()
+        print("Connected to", address)
 
-        name = client.recv(1024).decode()
-        print(f"connected to {name}",end='\n')
+        sig = client.recv(1024)
+        name = client.recv(1024)
+        vr = digitalsig.verify(sig, name)
+        print(f"Connected to {name.decode()}    --{vr}--", end='\n')
         try:
             while True:
                 print("wait...")
+                sig = client.recv(1024)
                 data = client.recv(1024)
+                vr = digitalsig.verify(sig, name)
                 if not data:
                     break
-                print(f"{name}: ", data.decode())
-
+                print(f"{name.decode()}:  {data.decode()} --{vr}-- ")
 
                 msg = input("You: ")
                 client.sendall(msg.encode())
@@ -35,7 +44,6 @@ def main():
             s.close()
 
     con()
-
 
 if __name__ == '__main__':
     main()
