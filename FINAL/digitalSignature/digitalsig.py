@@ -23,8 +23,6 @@ def verify(signature,message):
 def sign(message,):
         #message = b'hello'
         key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL/generateKeys/public.key').read())
-
-
         hash = SHA1.new(message)
 
         signer = pkcs1_15.new(key)
