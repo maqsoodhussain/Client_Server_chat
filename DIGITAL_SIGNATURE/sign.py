@@ -19,7 +19,6 @@ def main():
         # file_out.write(signature)
         # file_out.close()
 
-
         # file_out = open("message.txt","wb")
         # file_out.write(message)
         # file_out.close()
