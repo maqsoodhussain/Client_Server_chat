@@ -6,7 +6,7 @@ from Crypto.Hash import SHA1
 from Crypto.PublicKey import RSA
 
 def verify(signature,message):
-        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL/public.key').read())
+        key = RSA.import_key(open('D:\GITHUB\Chat_App\FINAL\generateKeys\private.key').read())
         #message = b'hello '
         
 
