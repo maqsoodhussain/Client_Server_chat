@@ -3,7 +3,7 @@ import socket
 def main():
     
     def con():
-        host = "localhost"
+        host = "192.168.43.239"
         port = 1255
 
 

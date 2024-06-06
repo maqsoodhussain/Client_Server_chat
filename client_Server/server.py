@@ -3,7 +3,7 @@ import socket
 s = socket.socket()
 print("Socket Connected")
 
-host = '192.168.239.145'
+host = '0.0.0.0'
 port = 1255
 
 s.bind((host, port))
