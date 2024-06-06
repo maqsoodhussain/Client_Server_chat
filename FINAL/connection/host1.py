@@ -2,6 +2,7 @@ import sys
 sys.path.append('../')
 import socket
 from generateKeys import genkey
+from database import connect
 from digitalSignature import digitalsig
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA1
@@ -19,6 +20,21 @@ def main():
 
         client, address = s.accept()
         print("Connected to", address)
+
+        username = client.recv(1024).decode()
+        password = client.recv(1024).decode()
+        print(f" USERNAME: {username}, PASSWORD: {password}")
+
+        result = connect.verify_credentials(username,password)
+        if result is True:
+            client.sendall("ACCESS GRANTED..".encode())
+            print("VALID USER ACCESSED")
+        else:
+            client.sendall("ACCESS DENIED..!".encode())
+            print("UNAUTHORIZED USER TRY TO ACCESS")
+            client.close()
+            return 
+
 
         sig = client.recv(1024)
         name = client.recv(1024)

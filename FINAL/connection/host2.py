@@ -16,13 +16,22 @@ def main():
         c = socket.socket()
         c.connect((host, port))
 
-        name = input("Enter Name: ")
+        username = input("Enter Username: ")
+        c.sendall(username.encode())
+        password = input("Enter Password: ")
+        c.sendall(password.encode())
+
+        result = c.recv(1024).decode()
+        print(f"{result}")
+
+        if(result=="ACCESS DENIED..!"):
+            return
+        
+        name = input("\nEnter Name: ")
 
         sig = digitalsig.sign(name.encode())
         c.sendall(sig)
         c.sendall(name.encode())
-
-        print("Connected to server")
 
         try:
             while True:

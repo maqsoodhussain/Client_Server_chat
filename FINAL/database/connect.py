@@ -11,9 +11,13 @@ cur.execute('''
         )
     ''')
 conn.commit()
-def insert(user, pwd):
+def insert():
+    print("Enter user details to enter in database")
+    user = input("Enter Username: ")
+    pwd= input("Enter password: ")
     cur.execute('''INSERT INTO login(username,password) VALUES (?, ?)''', (user, pwd ))
     conn.commit()
+    
 
 def get():
     cur.execute('SELECT * FROM login')
