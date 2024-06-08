@@ -7,7 +7,7 @@ from Crypto.PublicKey import RSA
 
 # verify using private key and sign using public key
 def verify(signature,message):
-        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL/generateKeys/private.key').read())
+        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL 1.0/generateKeys/private.key').read())
         #message = b'hello '
         
 
@@ -20,10 +20,10 @@ def verify(signature,message):
         except (ValueError,TypeError):
             return "NOT VERIFIED"
         
-def sign(message,):
+def sign(msg,):
         #message = b'hello'
-        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL/generateKeys/public.key').read())
-        hash = SHA1.new(message)
+        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL 1.0/generateKeys/public.key').read())
+        hash = SHA1.new(msg)
 
         signer = pkcs1_15.new(key)
         signature = signer.sign(hash) #signature.hex()
