@@ -14,7 +14,7 @@ def main():
     c.connect((host, port))
 
     def sign_message(m,):
-        key = RSA.import_key(open('D:/GITHUB/Chat_App/FINAL 1.0/generateKeys/public.key').read())
+        key = RSA.import_key(open('public.key').read())
         hash = SHA1.new(m.encode())
 
         signer = pkcs1_15.new(key)
