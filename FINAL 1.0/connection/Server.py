@@ -1,11 +1,15 @@
 import sys
-sys.path.append('../')
+sys.path.append('D:/GITHUB/Chat_App/FINAL 1.0/')
 import socket
-from generateKeys import genkey
-from database import connect
-from digitalSignature import digitalsig
+from generateKeys import genkey # type: ignore
+import connect # type: ignore
+from digitalSignature import digitalsig 
 from Crypto.Signature import pkcs1_15
 from Crypto.Hash import SHA1
+from Crypto.PublicKey import RSA
+
+
+
 
 def main():
 
